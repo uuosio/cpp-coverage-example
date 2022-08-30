@@ -1,0 +1,13 @@
+#include <stdint.h>
+#include <catch2/catch_test_macros.hpp>
+#include "chaintester.h"
+#include "utils.h"
+
+using namespace std;
+
+#define HELLO_WASM "@CMAKE_BINARY_DIR@/hello/hello/hello.wasm"
+#define HELLO_ABI "@CMAKE_BINARY_DIR@/hello/hello/hello.abi"
+
+#ifdef __cplusplus
+    extern "C" void hello_native_apply( uint64_t receiver, uint64_t code, uint64_t action );
+#endif
