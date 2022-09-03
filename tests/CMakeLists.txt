@@ -3,6 +3,7 @@ message(STATUS "++++++++++CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 
 add_executable( hello_tests 
     src/test_hello.cpp
+    src/main.cpp
 )
 
 target_compile_options(hello_tests PRIVATE 
@@ -18,12 +19,10 @@ target_link_options(hello_tests PRIVATE -fprofile-arcs -ftest-coverage)
 target_link_libraries ( hello_tests
     hello_native
     chaintester
-    ${CMAKE_BINARY_DIR}/external/cpp-chaintester/libs/Catch2/src/libCatch2Maind.a
     ${CMAKE_BINARY_DIR}/external/cpp-chaintester/libs/Catch2/src/libCatch2d.a
-    ${CMAKE_BINARY_DIR}/external/cpp-chaintester/libs/thrift/lib/libthriftd${CMAKE_STATIC_LIBRARY_SUFFIX}
 )
 
-add_dependencies(hello_tests chaintester Catch2 Catch2WithMain)
+add_dependencies(hello_tests chaintester Catch2)
 
 target_include_directories(hello_tests PUBLIC
     "${CMAKE_CURRENT_SOURCE_DIR}/src"

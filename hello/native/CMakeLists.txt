@@ -5,9 +5,7 @@ add_library( hello_native
 
 set_target_properties(hello_native PROPERTIES CXX_VISIBILITY_PRESET hidden)
 
-target_compile_options(hello_native PRIVATE 
-    -g
-    -O0
+target_compile_options(hello_native PRIVATE
     -fprofile-arcs -ftest-coverage
     -DEOSIO_NATIVE
     -Wno-unknown-attributes
