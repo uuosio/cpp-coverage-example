@@ -9,6 +9,9 @@ extern "C" __attribute__ ((visibility ("default"))) void hello_native_apply( uin
          case "check"_n.value:
             eosio::execute_action( eosio::name(receiver), eosio::name(code), &hello::check );
             break;
+         case "test"_n.value:
+            eosio::execute_action( eosio::name(receiver), eosio::name(code), &hello::test );
+            break;
       }
    }
 }
