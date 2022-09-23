@@ -19,10 +19,9 @@ target_link_options(hello_tests PRIVATE -fprofile-arcs -ftest-coverage)
 target_link_libraries ( hello_tests
     hello_native
     chaintester
-    ${CMAKE_BINARY_DIR}/external/cpp-chaintester/libs/Catch2/src/libCatch2d.a
 )
 
-add_dependencies(hello_tests chaintester Catch2)
+add_dependencies(hello_tests chaintester)
 
 target_include_directories(hello_tests PUBLIC
     "${CMAKE_CURRENT_SOURCE_DIR}/src"
