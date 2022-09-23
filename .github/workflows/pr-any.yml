@@ -64,6 +64,7 @@ jobs:
         run: |
           cd build
           ./tests/hello_tests
+          llvm-cov gcov `find . -name "*.gcda"`
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
