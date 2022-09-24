@@ -7,8 +7,7 @@ add_executable( hello_tests
 )
 
 target_compile_options(hello_tests PRIVATE 
-    -g
-    -O0
+    -fprofile-arcs -ftest-coverage
     -DEOSIO_NATIVE
     -Wno-unknown-attributes
     -Wno-deprecated-declarations
