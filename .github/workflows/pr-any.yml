@@ -40,11 +40,12 @@ jobs:
           python3 -m pip install -U pip setuptools
       - name: Install cdt
         run: |
-          wget https://github.com/EOSIO/eosio.cdt/releases/download/v1.7.0/eosio.cdt_1.7.0-1-ubuntu-18.04_amd64.deb
-          sudo apt install ./eosio.cdt_1.7.0-1-ubuntu-18.04_amd64.deb
+          python3 -m pip install -U eoscdt
+          eoscdt check
       - name: Install boost
         run: |
           sudo apt-get install libboost-all-dev
+          sudo apt-get install ninja-build
       - name: Install llvm
         run: |
           sudo apt install llvm
@@ -58,8 +59,8 @@ jobs:
         run: |
           mkdir build
           cd build
-          CXX=clang++ CC=clang cmake -DCMAKE_BUILD_TYPE=Debug ..
-          make -j4
+          CXX=clang++ CC=clang cmake -DCMAKE_BUILD_TYPE=Debug -Dcdt_DIR=`cdt-get-dir` -GNinja ..
+          ninja
       - name: test
         run: |
           cd build
