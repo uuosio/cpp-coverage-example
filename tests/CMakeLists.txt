@@ -11,6 +11,7 @@ target_compile_options(hello_tests PRIVATE
     -DEOSIO_NATIVE
     -Wno-unknown-attributes
     -Wno-deprecated-declarations
+    -Wno-unused-value
 )
 
 target_link_options(hello_tests PRIVATE -fprofile-arcs -ftest-coverage)
